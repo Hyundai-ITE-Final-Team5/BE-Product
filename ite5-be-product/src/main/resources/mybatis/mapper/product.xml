@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.mycompany.product.dao.ProductDao">
+	<select id="totalProductCount" resultType="int">
+		SELECT count(pid) FROM product_common
+	</select>
+	<select id="getProductByBno" resultType="product" parameterType="HashMap">
+	<![CDATA[
+		SELECT rnum, pid, pname, bname, bno
+			FROM (
+			  SELECT ROWNUM as rnum, pid, pname, bname, bno
+			  FROM (
+			    SELECT pid, pname, bname, bno
+			    FROM product
+			    WHERE bno = #{bno}
+			  )
+			  WHERE ROWNUM <= #{pager.endRowNo}  
+			)
+			WHERE rnum >= #{pager.startRowNo}
+			]]>
+	</select>
+</mapper>
