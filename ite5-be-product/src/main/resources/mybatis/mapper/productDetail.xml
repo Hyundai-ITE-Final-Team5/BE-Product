@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.mycompany.product.dao.ProductDetailDao">
+	
+	<select id="getProductCommonByPid" resultType="product" parameterType="String">
+		 SELECT pid, pname, pnote, brand.bname, pstatus
+                FROM product_common JOIN brand
+                ON product_common.bno = brand.bno
+				WHERE pid=#{pid}
+	</select>
+	
+	<select id="getProductStockByPcid" resultType="productstock" parameterType="String">
+		 SELECT psid, psstock, psize, pcid
+		 	FROM product_stock
+		 	WHERE pcid=#{pcid}
+	</select>
+	
+	
+</mapper>
