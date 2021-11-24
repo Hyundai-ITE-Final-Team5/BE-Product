@@ -27,11 +27,11 @@ public class NavBarController {
 
 	@RequestMapping("/categoryList")
 	public Map<String, Object> categoryList(String depth1) {
-		Map<String, Object> categoryList = new HashMap();
+		Map<String, Object> categoryMap = new HashMap();
 
 		List<Category> depth1Category = navBarService.getCategoryByDepth1(depth1);
 
-		Map<String, List<String>> depth2 = new HashMap();
+		Map<String, List<String>> depth2 = new HashMap();		
 
 		for (Category cate : depth1Category) {
 			List<String> list;
@@ -45,10 +45,10 @@ public class NavBarController {
 			depth2.put(cate.getDepth2name(), list);
 
 		}
+		
+		categoryMap.put(depth1, depth2);
 
-		categoryList.put(depth1, depth2);
-
-		return categoryList;
+		return categoryMap;
 	}
 
 	@RequestMapping("/brandList")

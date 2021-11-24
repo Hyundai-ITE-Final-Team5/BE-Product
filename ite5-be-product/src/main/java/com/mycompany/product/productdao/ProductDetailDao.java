@@ -1,4 +1,4 @@
-package com.mycompany.product.dao;
+package com.mycompany.product.productdao;
 
 import java.util.List;
 
