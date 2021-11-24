@@ -9,5 +9,7 @@ public class Product {
 	String pnote;	
 	String bname;
 	int bno;
-	int pstate;
+	int pstatus;
+	boolean like;
+	Object colorinfo;
 }

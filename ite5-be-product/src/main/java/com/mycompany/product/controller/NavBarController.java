@@ -8,14 +8,12 @@ import java.util.Map;
 
 import javax.annotation.Resource;
 
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.mycompany.product.dto.Brand;
 import com.mycompany.product.dto.Category;
 import com.mycompany.product.service.NavBarService;
-import com.mycompany.product.service.ProductService;
-import com.mycompany.product.vo.Brand;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -54,13 +52,10 @@ public class NavBarController {
 	}
 
 	@RequestMapping("/brandList")
-	public Map<String, Object> brandList() {
-		Map<String, Object> brandList = new HashMap();
+	public List<Brand> brandList() {
 
 		List<Brand> brands = navBarService.getBrands();
 
-		brandList.put("brand", brands);
-
-		return brandList;
+		return brands;
 	}
 }

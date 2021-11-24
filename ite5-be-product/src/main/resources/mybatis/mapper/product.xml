@@ -5,7 +5,8 @@
 
 <mapper namespace="com.mycompany.product.dao.ProductDao">
 	<select id="totalProductCount" resultType="int">
-		SELECT count(pid) FROM product_common
+		SELECT count(pid) FROM
+			product_common
 	</select>
 	<select id="getProductByBno" resultType="product" parameterType="HashMap">
 	<![CDATA[
@@ -21,5 +22,34 @@
 			)
 			WHERE rnum >= #{pager.startRowNo}
 			]]>
+	</select>
+	
+	<select id="getProductByPid" resultType="productcolor" parameterType="String">
+		SELECT pcid, pcimg1, pcimg2, pcimg3, pcchipimg, pccolorcode, pcprice, pid
+			FROM product_color
+    		WHERE pid=#{pid}
+	</select>
+
+	<select id="getProductByCategory" resultType="product" parameterType="HashMap">
+		SELECT rnum, pid, pname, bname, bno
+			FROM (
+			  SELECT ROWNUM as rnum, pid, pname, bname, bno
+			  FROM (
+			    SELECT pid, pname, bname, bno
+				    FROM product
+				    WHERE pid IN ( SELECT pid FROM product_category
+				                            WHERE cateno IN (SELECT cateno FROM category
+				                                    WHERE depth1name = #{category.depth1name}
+				                                    <if test="category.depth2name != null">
+				                                    AND  depth2name = #{category.depth2name}
+				                                    </if>
+				                                    <if test="category.depth3name != null">
+				                                    AND depth3name = #{category.depth3name}
+				                                     </if>
+				                                    ))	                                    
+			  )
+			  WHERE ROWNUM &lt;= #{pager.endRowNo}  
+			)
+			WHERE rnum &gt;= #{pager.startRowNo}
 	</select>
 </mapper>

@@ -4,8 +4,8 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;
 
+import com.mycompany.product.dto.Brand;
 import com.mycompany.product.dto.Category;
-import com.mycompany.product.vo.Brand;
 
 @Mapper
 public interface NavBarDao {

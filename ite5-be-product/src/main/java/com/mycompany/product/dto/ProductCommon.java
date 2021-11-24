@@ -1,9 +1,9 @@
-package com.mycompany.product.vo;
+package com.mycompany.product.dto;
 
 import lombok.Data;
 
 @Data
-public class Product_Common {
+public class ProductCommon {
 	String pid;
 	String pname;
 	String pnote;

@@ -7,8 +7,8 @@ import javax.annotation.Resource;
 import org.springframework.stereotype.Service;
 
 import com.mycompany.product.dao.NavBarDao;
+import com.mycompany.product.dto.Brand;
 import com.mycompany.product.dto.Category;
-import com.mycompany.product.vo.Brand;
 
 import lombok.extern.slf4j.Slf4j;
 
