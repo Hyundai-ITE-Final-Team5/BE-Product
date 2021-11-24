@@ -6,9 +6,9 @@ import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
 
-import com.mycompany.product.dao.ProductDetailDao;
 import com.mycompany.product.dto.Product;
 import com.mycompany.product.dto.ProductStock;
+import com.mycompany.product.productdao.ProductDetailDao;
 
 import lombok.extern.slf4j.Slf4j;
 

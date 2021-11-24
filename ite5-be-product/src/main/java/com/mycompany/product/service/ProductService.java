@@ -8,11 +8,11 @@ import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
 
-import com.mycompany.product.dao.ProductDao;
 import com.mycompany.product.dto.Category;
 import com.mycompany.product.dto.Pager;
 import com.mycompany.product.dto.Product;
 import com.mycompany.product.dto.ProductColor;
+import com.mycompany.product.productdao.ProductDao;
 
 import lombok.extern.slf4j.Slf4j;
 
