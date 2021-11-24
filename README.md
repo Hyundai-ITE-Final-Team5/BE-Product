@@ -6,7 +6,7 @@
 
 | API                       | 설명 | input data             |
 | ------------------------- | ---- | ---------------------- |
-| get  /navbar/categoryList |      | ?depth1={categoryname} |
+| `GET` **/menu/list/{pageno}** |      | ?depth1={categoryname} |
 | get  /navbar/brandList    |      |                        |
 
 ### productList
