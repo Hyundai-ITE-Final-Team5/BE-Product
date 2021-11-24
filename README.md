@@ -15,7 +15,6 @@
 | `get`  /list/category |  | ?depth1=WOMEN&depth2=DRESS&depth3=MINI%20DRESS |
 | `get`  /list/addlike/{pid} |  |  |
 | `get`  /list/delike/{pid} |  |  |
-|  |  |  |
 
 ### productDetail
 
