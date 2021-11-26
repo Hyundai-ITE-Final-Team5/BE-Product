@@ -42,8 +42,9 @@ public class ProductDetailController {
 		log.info("실행");
 		
 		String mid = null;
+		
 
-		if (request.getHeader("Authorization") != null) {
+		if (!request.getHeader("Authorization").equals("")) {
 			String jwt = request.getHeader("Authorization").substring(7);
 			Claims claims = JWTUtil.validateToken(jwt);
 			mid = JWTUtil.getMid(claims);

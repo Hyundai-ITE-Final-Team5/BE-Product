@@ -38,8 +38,8 @@ public class ProductController {
 		log.info("실행");
 
 		String mid = null;
-
-		if (request.getHeader("Authorization") != null) {
+		
+		if (!request.getHeader("Authorization").equals("")) {
 			String jwt = request.getHeader("Authorization").substring(7);
 			Claims claims = JWTUtil.validateToken(jwt);
 			mid = JWTUtil.getMid(claims);
@@ -78,7 +78,7 @@ public class ProductController {
 
 		String mid = null;
 
-		if (request.getHeader("Authorization") != null) {
+		if (!request.getHeader("Authorization").equals("")) {
 			String jwt = request.getHeader("Authorization").substring(7);
 			Claims claims = JWTUtil.validateToken(jwt);
 			mid = JWTUtil.getMid(claims);
@@ -121,8 +121,8 @@ public class ProductController {
 	public void addLike(@PathVariable String pid, HttpServletRequest request) {
 		
 		String mid = null;
-
-		if (request.getHeader("Authorization") != null) {
+		
+		if (!request.getHeader("Authorization").equals("")) {
 			String jwt = request.getHeader("Authorization").substring(7);
 			Claims claims = JWTUtil.validateToken(jwt);
 			mid = JWTUtil.getMid(claims);
@@ -135,7 +135,7 @@ public class ProductController {
 	public void delLike(@PathVariable String pid, HttpServletRequest request) {
 		String mid = null;
 
-		if (request.getHeader("Authorization") != null) {
+		if (!request.getHeader("Authorization").equals("")) {
 			String jwt = request.getHeader("Authorization").substring(7);
 			Claims claims = JWTUtil.validateToken(jwt);
 			mid = JWTUtil.getMid(claims);
