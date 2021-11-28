@@ -22,5 +22,5 @@ https://www.notion.so/REST-API-ad49e3bd11aa4635a7e5737d2a69df6f
 
 | API | 설명 | input data |
 | --- | --- | --- |
-| `get`  /product/{pcid} |  |  |
+| `get`  /product/detail/{pcid} |  |  |
 | `get`  /product/exit/{pcid} |  |  |
