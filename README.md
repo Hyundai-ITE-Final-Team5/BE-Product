@@ -1,26 +1,33 @@
-https://www.notion.so/REST-API-ad49e3bd11aa4635a7e5737d2a69df6f
-
 ## Product
 
-### navbar
+## API 정리
 
-| API | 설명 | input data |
-| --- | --- | --- |
-| `get`  /navbar/categoryList |  | ?depth1={categoryname} |
-| `get`  /navbar/brandList |  |  |
 
-### productList
 
-| API | 설명 | input data |
-| --- | --- | --- |
-| `get`  /list/brand/{bno} |  | ?pageNo=1 |
-| `get`  /list/category |  | ?depth1=WOMEN&depth2=DRESS&depth3=MINI%20DRESS |
-| `get`  /list/addlike/{pid} |  |  |
-| `get`  /list/delike/{pid} |  |  |
+### 🧾navbar
 
-### productDetail
+`GET` **/navbar/categoryList?depth1={categoryname}** : 카테고리 대분류로 목록 가져오기
 
-| API | 설명 | input data |
-| --- | --- | --- |
-| `get`  /product/detail/{pcid} |  |  |
-| `get`  /product/exit/{pcid} |  |  |
+`GET` **/navbar/brandList** : 브랜드 리스트 가져오기
+
+-----------------------------------------
+
+### 🧾productList
+
+`GET` **/list/brand/{bno}?pageNo={no}** : 브랜드 상품리스트 가져오기 (pageNo)
+
+`GET` **/list/category?depth1={depth1}&depth2={depth2}&depth3={depth3}** : 카테고리 상품리스트 가져오기 (pageNo)
+
+`GET` **/list/addlike/{pid}** : 좋아요 상품 추가하기
+
+`GET` **/list/delike/{pid}** : 좋아요 상품 취소하기
+
+-----------------------------------------
+
+### 👨‍👩‍👧USER
+
+
+`GET` **/product/detail/{pcid}** : 상품상세 불러오기
+
+`GET` **/product/exit/{pcid}** : 상품상세 나가기
+
