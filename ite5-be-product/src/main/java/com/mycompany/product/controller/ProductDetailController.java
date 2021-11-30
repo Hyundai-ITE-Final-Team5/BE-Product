@@ -61,7 +61,7 @@ public class ProductDetailController {
 			}
 		}
 		
-		List<ProductColor> colorinfo = productService.getProductByPid(pid);
+		List<ProductColor> colorinfo = productService.getProductColorByPid(pid);
 		
 		for(ProductColor ci : colorinfo) {
 			List<ProductStock> ps = productDetailService.getProductStockByPcid(ci.getPcid());

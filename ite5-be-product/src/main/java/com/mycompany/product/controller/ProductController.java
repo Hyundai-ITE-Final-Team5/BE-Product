@@ -1,6 +1,7 @@
 
 package com.mycompany.product.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -32,6 +33,8 @@ public class ProductController {
 	@Resource
 	private LikeService likeService;
 
+	
+
 	@RequestMapping("/brand/{bno}")
 	public List<Product> displayByBno(@PathVariable int bno, @RequestParam(defaultValue = "1") int pageNo,
 			HttpServletRequest request) {
@@ -52,7 +55,7 @@ public class ProductController {
 
 		if (mid != null) { // 로그인 되어 있으면
 			for (Product pid : productList) {
-				List<ProductColor> products = productService.getProductByPid(pid.getPid());
+				List<ProductColor> products = productService.getProductColorByPid(pid.getPid());
 				pid.setColorinfo(products);
 
 				// 좋아요 조회
@@ -63,7 +66,7 @@ public class ProductController {
 			}
 		} else {
 			for (Product pid : productList) {
-				List<ProductColor> products = productService.getProductByPid(pid.getPid());
+				List<ProductColor> products = productService.getProductColorByPid(pid.getPid());
 				pid.setColorinfo(products);
 			}
 		}
@@ -98,7 +101,7 @@ public class ProductController {
 
 		if (mid != null) { // 로그인 되어 있으면
 			for (Product pid : productList) {
-				List<ProductColor> products = productService.getProductByPid(pid.getPid());
+				List<ProductColor> products = productService.getProductColorByPid(pid.getPid());
 				pid.setColorinfo(products);
 
 				int like = likeService.getLikeProduct(mid, pid.getPid());
@@ -108,7 +111,7 @@ public class ProductController {
 			}
 		} else {
 			for (Product pid : productList) {
-				List<ProductColor> products = productService.getProductByPid(pid.getPid());
+				List<ProductColor> products = productService.getProductColorByPid(pid.getPid());
 				pid.setColorinfo(products);
 			}
 		}
