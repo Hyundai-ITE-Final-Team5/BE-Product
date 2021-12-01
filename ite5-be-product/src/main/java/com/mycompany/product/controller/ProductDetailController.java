@@ -37,7 +37,7 @@ public class ProductDetailController {
 	
 	private static Map<String, Integer> visit = new HashMap();
 	
-	@RequestMapping("/{pcid}")
+	@RequestMapping("/detail/{pcid}")
 	public Map<String, Object> displayProductDetail(@PathVariable String pcid, HttpServletRequest request) {
 		log.info("실행");
 		
@@ -61,7 +61,7 @@ public class ProductDetailController {
 			}
 		}
 		
-		List<ProductColor> colorinfo = productService.getProductByPid(pid);
+		List<ProductColor> colorinfo = productService.getProductColorByPid(pid);
 		
 		for(ProductColor ci : colorinfo) {
 			List<ProductStock> ps = productDetailService.getProductStockByPcid(ci.getPcid());
@@ -78,6 +78,7 @@ public class ProductDetailController {
 		
 		map.put("common", common);
 		map.put("detail", colorinfo);
+		map.put("visiter", visit.get(pid));
 		
 		return map;	
 	}

@@ -12,6 +12,7 @@ import com.mycompany.product.dto.Category;
 import com.mycompany.product.dto.Pager;
 import com.mycompany.product.dto.Product;
 import com.mycompany.product.dto.ProductColor;
+import com.mycompany.product.orderdao.OrderDao;
 import com.mycompany.product.productdao.ProductDao;
 
 import lombok.extern.slf4j.Slf4j;
@@ -22,6 +23,8 @@ public class ProductService {
 	
 	@Resource
 	private ProductDao productDao;
+	@Resource
+	private OrderDao orderDao;
 	
 	public int getTotalProductNum(){
 		return productDao.totalProductCount();
@@ -34,8 +37,8 @@ public class ProductService {
 		return productDao.getProductByBno(map);
 	}
 	
-	public List<ProductColor> getProductByPid(String pid){
-		return productDao.getProductByPid(pid);
+	public List<ProductColor> getProductColorByPid(String pid){
+		return productDao.getProductColorByPid(pid);
 	}
 	
 	public List<Product> getProductByCategory(Category category, Pager pager){
@@ -46,5 +49,11 @@ public class ProductService {
 		return productDao.getProductByCategory(map);
 	}
 	
+	public Product getProductByPid(String pid) {
+		return productDao.getProductByPid(pid);
+	}
 	
+	public List<String> getBestProduct(int dpNum){
+		return orderDao.getBestProduct(dpNum);
+	}
 }

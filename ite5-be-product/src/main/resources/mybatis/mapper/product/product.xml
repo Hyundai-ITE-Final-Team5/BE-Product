@@ -24,7 +24,7 @@
 			]]>
 	</select>
 	
-	<select id="getProductByPid" resultType="productcolor" parameterType="String">
+	<select id="getProductColorByPid" resultType="productcolor" parameterType="String">
 		SELECT pcid, pcimg1, pcimg2, pcimg3, pcchipimg, pccolorcode, pcprice, pid
 			FROM product_color
     		WHERE pid=#{pid}

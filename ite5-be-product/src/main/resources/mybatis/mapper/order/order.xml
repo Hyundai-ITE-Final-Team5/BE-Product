@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.mycompany.product.orderdao.OrderDao">
+	<select id="getBestProduct" resultType="String" parameterType="int">
+			SELECT  bestproduct."pid" as pid
+			    FROM bestproduct		
+			    ORDER BY bestproduct."ordercount" DESC
+			    FETCH NEXT #{dpNum} ROWS ONLY
+	</select>
+</mapper>

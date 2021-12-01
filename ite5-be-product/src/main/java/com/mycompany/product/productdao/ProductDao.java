@@ -13,6 +13,7 @@ public interface ProductDao {
 	public int totalProductCount();
 	public List<Product> getProducts();
 	public List<Product> getProductByBno(Map<String, Object> map);
-	public List<ProductColor> getProductByPid(String pid);
+	public List<ProductColor> getProductColorByPid(String pid);
 	public List<Product> getProductByCategory(Map<String, Object> map);
+	public Product getProductByPid(String pid);
 }
