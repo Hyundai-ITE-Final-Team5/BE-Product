@@ -7,6 +7,7 @@ import java.util.List;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 
+import org.springframework.security.access.AuthorizationServiceException;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -77,7 +78,7 @@ public class ProductController {
 	@RequestMapping("/category")
 	public List<Product> displayByCategory(@RequestParam(defaultValue = "1") int pageNo, String depth1, String depth2,
 			String depth3, HttpServletRequest request) {
-		log.info("실행");
+		log.info("실행 pageNO: " + pageNo + " " + depth1 + depth2 + depth3);
 
 		String mid = null;
 
@@ -130,6 +131,8 @@ public class ProductController {
 			mid = JWTUtil.getMid(claims);
 
 			likeService.addLike(mid, pid);
+		}else {
+			throw new AuthorizationServiceException("로그인 정보가 없습니다.");
 		}
 	}
 
@@ -143,6 +146,8 @@ public class ProductController {
 			mid = JWTUtil.getMid(claims);
 
 			likeService.delLike(mid, pid);
+		}else {
+			throw new AuthorizationServiceException("로그인 정보가 없습니다.");
 		}
 	}
 
