@@ -77,7 +77,9 @@ public class ProductDetailController {
 
 		map.put("common", common);
 		map.put("detail", colorinfo);
-		map.put("visiter", visit.get(pid));
+		map.put("visitor", visit.get(pid));
+		
+		log.info(map.toString());
 
 		return map;
 	}

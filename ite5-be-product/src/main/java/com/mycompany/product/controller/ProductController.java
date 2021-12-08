@@ -1,7 +1,6 @@
 
 package com.mycompany.product.controller;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -50,7 +49,7 @@ public class ProductController {
 		}
 
 		int totalRows = productService.getTotalProductNum();
-		Pager pager = new Pager(5, 5, totalRows, pageNo);
+		Pager pager = new Pager(10, 5, totalRows, pageNo);
 
 		List<Product> productList = productService.getProductByBno(bno, pager);
 
@@ -89,7 +88,7 @@ public class ProductController {
 		}
 
 		int totalRows = productService.getTotalProductNum();
-		Pager pager = new Pager(5, 5, totalRows, pageNo);
+		Pager pager = new Pager(10, 5, totalRows, pageNo);
 
 		Category category = new Category();
 		category.setDepth1name(depth1);

@@ -1,5 +1,7 @@
 package com.mycompany.product.dto;
 
+import java.util.Date;
+
 import lombok.Data;
 
 @Data
@@ -11,5 +13,6 @@ public class Product {
 	int bno;
 	int pstatus;
 	boolean like;
+	Date preleasedate;
 	Object colorinfo;
 }

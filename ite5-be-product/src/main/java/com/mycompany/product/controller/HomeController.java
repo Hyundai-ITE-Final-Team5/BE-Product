@@ -35,19 +35,16 @@ public class HomeController {
 
 	@RequestMapping("/bestproduct")
 	public List<Product> bestProduct(HttpServletRequest request) {
-		log.info("실행");
 
 		String mid = null;
 
-		if (!request.getHeader("Authorization").equals("")) {
-//		if(request.getHeader("Authorization") != null) {
+		if (request.getHeader("Authorization") != null && !request.getHeader("Authorization").equals("")) {
 			String jwt = request.getHeader("Authorization").substring(7);
 			Claims claims = JWTUtil.validateToken(jwt);
 			mid = JWTUtil.getMid(claims);
 		}
 
-		List<String> pidList = productService.getBestProduct(5);// 베스트상품 가져오는 갯수
-
+		List<String> pidList = productService.getBestProduct(10);// 베스트상품 가져오는 갯수
 		List<Product> productList = new ArrayList();
 
 		if (mid != null) { // 로그인 되어 있으면
@@ -75,7 +72,36 @@ public class HomeController {
 			}
 		}
 
-		// 배열에 담아서 리턴
+		return productList;
+	}
+	
+	@RequestMapping("/newproduct")
+	public List<Product> newProduct(HttpServletRequest request) {
+
+		String mid = null;
+
+		if (request.getHeader("Authorization") != null && !request.getHeader("Authorization").equals("")) {
+			String jwt = request.getHeader("Authorization").substring(7);
+			Claims claims = JWTUtil.validateToken(jwt);
+			mid = JWTUtil.getMid(claims);
+		}
+
+		List<Product> productList = productService.getNewProduct(10);
+		
+		if(mid != null) {
+			for(Product pd: productList) {
+				pd.setColorinfo(productService.getProductColorByPid(pd.getPid()));
+				int like = likeService.getLikeProduct(mid, pd.getPid());
+				if (like > 0) {
+					pd.setLike(true);
+				}
+			}
+		}else {
+			for(Product pd: productList) {
+				pd.setColorinfo(productService.getProductColorByPid(pd.getPid()));
+			}
+		}
+		
 
 		return productList;
 	}

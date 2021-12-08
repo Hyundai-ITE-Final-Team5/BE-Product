@@ -56,4 +56,8 @@ public class ProductService {
 	public List<String> getBestProduct(int dpNum){
 		return orderDao.getBestProduct(dpNum);
 	}
+	
+	public List<Product> getNewProduct(int dpNum){
+		return productDao.getNewProduct(dpNum);
+	}
 }
