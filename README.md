@@ -36,6 +36,6 @@
 ### 👨‍👩‍👧HOME
 
 
-`GET` **/bestproduct** : 베스트상품 불러오기 (5개)
+`GET` **/bestproduct** : 베스트상품 불러오기 (10개)
 
-`GET` **/brandnewproduct** : 신상품 불러오기 (5개)
+`GET` **/brandnewproduct** : 신상품 불러오기 (10개)
