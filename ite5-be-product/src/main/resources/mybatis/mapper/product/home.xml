@@ -11,4 +11,12 @@
 		                                    WHERE pid=#{pid}) product
 		    ON brand.bno = product.bno
 	</select>
+	
+	<select id="getNewProduct" resultType="product" parameterType="int">
+		SELECT brand.bname, product.*
+	    FROM brand JOIN (SELECT * FROM product_common
+                           ORDER BY preleasedate DESC
+                           FETCH NEXT #{dpNum} ROWS ONLY) product
+	    ON brand.bno = product.bno
+	</select>
 </mapper>

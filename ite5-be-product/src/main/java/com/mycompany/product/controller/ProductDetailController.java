@@ -34,15 +34,14 @@ public class ProductDetailController {
 	private ProductService productService;
 	@Resource
 	private LikeService likeService;
-	
+
 	private static Map<String, Integer> visit = new HashMap();
-	
+
 	@RequestMapping("/detail/{pcid}")
 	public Map<String, Object> displayProductDetail(@PathVariable String pcid, HttpServletRequest request) {
 		log.info("실행");
-		
+
 		String mid = null;
-		
 
 		if (!request.getHeader("Authorization").equals("")) {
 			String jwt = request.getHeader("Authorization").substring(7);
@@ -51,46 +50,47 @@ public class ProductDetailController {
 		}
 
 		String pid = pcid.split("_")[0];
-		
+
 		Product common = productDetailService.getProductCommonByPid(pid);
-		
-		if(mid != null) {
+
+		if (mid != null) {
 			int like = likeService.getLikeProduct(mid, common.getPid());
-			if(like > 0) {
+			if (like > 0) {
 				common.setLike(true);
 			}
 		}
-		
+
 		List<ProductColor> colorinfo = productService.getProductColorByPid(pid);
-		
-		for(ProductColor ci : colorinfo) {
+
+		for (ProductColor ci : colorinfo) {
 			List<ProductStock> ps = productDetailService.getProductStockByPcid(ci.getPcid());
 			ci.setSizeinfo(ps);
 		}
-		
-		if(visit.containsKey(pid)) { //동시 접속자 수 증가
+
+		if (visit.containsKey(pid)) { // 동시 접속자 수 증가
 			visit.put(pid, visit.get(pid) + 1);
-		}else {
+		} else {
 			visit.put(pid, 1);
 		}
-		
+
 		Map<String, Object> map = new HashMap();
-		
+
 		map.put("common", common);
 		map.put("detail", colorinfo);
-		map.put("visiter", visit.get(pid));
+		map.put("visitor", visit.get(pid));
 		
-		return map;	
+		log.info(map.toString());
+
+		return map;
 	}
-	
 
 	@RequestMapping("/exit/{pcid}")
 	public void exitProductDetail(@PathVariable String pcid) {
 		String pid = pcid.split("_")[0];
-		
-		if(visit.get(pid) == 1) { //동시 접속자 수 감소
+
+		if (visit.get(pid) == 1) { // 동시 접속자 수 감소
 			visit.remove(pid);
-		}else {
+		} else {
 			visit.put(pid, visit.get(pid) - 1);
 		}
 	}

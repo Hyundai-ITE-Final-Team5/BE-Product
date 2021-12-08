@@ -16,4 +16,5 @@ public interface ProductDao {
 	public List<ProductColor> getProductColorByPid(String pid);
 	public List<Product> getProductByCategory(Map<String, Object> map);
 	public Product getProductByPid(String pid);
+	public List<Product> getNewProduct(int dpNum);
 }
