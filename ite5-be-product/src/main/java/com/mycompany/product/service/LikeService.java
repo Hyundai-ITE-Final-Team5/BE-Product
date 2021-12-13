@@ -4,6 +4,7 @@ import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
 
+import com.mycompany.product.dto.Like;
 import com.mycompany.product.memberdao.MemberDao;
 
 import lombok.extern.slf4j.Slf4j;
@@ -19,8 +20,8 @@ public class LikeService {
 		return memberDao.getLikeProduct(mid, pid);
 	}
 	
-	public int addLike(String mid, String pid) {
-		return memberDao.addLike(mid, pid);
+	public int addLike(Like like) {
+		return memberDao.addLike(like);
 	}
 	
 	public int delLike(String mid, String pid) {

@@ -9,9 +9,9 @@
 			WHERE mid=#{mid} AND pid=#{pid}
 	</select>
 	
-	<insert id="addLike" parameterType="String">
+	<insert id="addLike" parameterType="like">
 		INSERT INTO likes(mid, pid, ltime)
-			VALUES(#{mid}, #{pid}, sysdate)
+			VALUES(#{mid}, #{pid}, #{ltime})
 	</insert>
 	
 	<delete id="delLike" parameterType="String">

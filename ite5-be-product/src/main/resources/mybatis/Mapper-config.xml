@@ -18,6 +18,7 @@
 			type="com.mycompany.product.dto.ProductColor" />
 		<typeAlias alias="productstock"
 			type="com.mycompany.product.dto.ProductStock" />
-
+		<typeAlias alias="like"
+			type="com.mycompany.product.dto.Like" />
 	</typeAliases>
 </configuration>

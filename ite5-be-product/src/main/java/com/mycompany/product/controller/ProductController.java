@@ -1,6 +1,7 @@
 
 package com.mycompany.product.controller;
 
+import java.util.Date;
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.mycompany.product.dto.Category;
+import com.mycompany.product.dto.Like;
 import com.mycompany.product.dto.Pager;
 import com.mycompany.product.dto.Product;
 import com.mycompany.product.dto.ProductColor;
@@ -128,8 +130,12 @@ public class ProductController {
 			String jwt = request.getHeader("Authorization").substring(7);
 			Claims claims = JWTUtil.validateToken(jwt);
 			mid = JWTUtil.getMid(claims);
-
-			likeService.addLike(mid, pid);
+			Like like = new Like();
+			like.setMid(mid);
+			like.setPid(pid);
+			like.setLtime(new Date().getTime());
+			likeService.addLike(like);
+			
 		}else {
 			throw new AuthorizationServiceException("로그인 정보가 없습니다.");
 		}
