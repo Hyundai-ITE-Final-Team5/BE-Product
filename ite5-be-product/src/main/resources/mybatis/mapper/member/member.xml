@@ -10,8 +10,8 @@
 	</select>
 	
 	<insert id="addLike" parameterType="String">
-		INSERT INTO likes(mid, pid)
-			VALUES(#{mid}, #{pid})
+		INSERT INTO likes(mid, pid, ltime)
+			VALUES(#{mid}, #{pid}, sysdate)
 	</insert>
 	
 	<delete id="delLike" parameterType="String">
